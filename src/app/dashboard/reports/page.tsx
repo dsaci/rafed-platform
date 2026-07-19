@@ -158,12 +158,12 @@ function EscalatedIssuesList() {
   const [issues, setIssues] = useState<{ id: string; ticket_number: string; description: string; wilaya: string; created_at: string }[]>([]);
 
   useEffect(() => {
-    supabase.from('issues').select('id, ticket_number, description, wilaya, created_at').eq('status', 'escalated').order('created_at', { ascending: false }).limit(10)
-      .then(({ data, error }) => {
+    const fetchEscalated = async () => {
+      try {
+        const { data, error } = await supabase.from('issues').select('id, ticket_number, description, wilaya, created_at').eq('status', 'escalated').order('created_at', { ascending: false }).limit(10);
         if (error || !data || data.length === 0) throw new Error();
         setIssues(data);
-      })
-      .catch(() => {
+      } catch (err) {
         // Fallback demo data from localStorage to ensure tight synchronization
         const stored = localStorage.getItem('demo_submitted_tickets');
         if (stored) {
@@ -179,7 +179,9 @@ function EscalatedIssuesList() {
         } else {
           setIssues([]); // 0 escalated issues
         }
-      });
+      }
+    };
+    fetchEscalated();
   }, []);
 
   if (issues.length === 0) return <p className="text-sm text-white/30">لا توجد انشغالات مرفوعة</p>;
