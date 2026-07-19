@@ -2,6 +2,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createServiceClient } from '@/lib/supabase';
 
+export const dynamic = 'force-dynamic';
+
 const SYSTEM_PROMPT = `أنت مساعد تقني متخصص حصرياً في المنصات الرقمية لوزارة التربية الوطنية الجزائرية.
 منصاتك المعروفة: فضاء الأستاذ، منصة تقييم المكتسبات، منصة موظف، فضاء المؤسسة، فضاء الأولياء، الديوان الوطني للامتحانات، الامتحانات المهنية للرتب، مسابقات التوظيف، برامج الباك والبيام.
 مهمتك:

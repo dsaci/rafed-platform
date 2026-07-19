@@ -63,7 +63,7 @@ async function getHomeData() {
 
   const stats: HomeStats = {
     totalIssues: allIssues.length,
-    solvedIssues: allIssues.filter((i) => i.status === 'solved').length,
+    solvedIssues: allIssues.filter((i: any) => i.status === 'solved').length,
     totalPlatforms: allPlatforms.length,
     totalWilayas: 69,
   };
