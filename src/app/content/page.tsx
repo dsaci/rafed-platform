@@ -13,8 +13,8 @@ export const metadata: Metadata = {
 export const revalidate = 60;
 
 export default async function ContentPage() {
-  let contentRes = { data: null };
-  let platformsRes = { data: null };
+  let contentRes: any = { data: null };
+  let platformsRes: any = { data: null };
 
   try {
     const results = await Promise.all([
