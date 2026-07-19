@@ -11,10 +11,10 @@ import type { Platform, Issue, Content, HomeStats } from '@/types';
 export const revalidate = 60; // ISR: revalidate every 60 seconds
 
 async function getHomeData() {
-  let platformsRes = { data: null };
-  let solvedIssuesRes = { data: null };
-  let contentRes = { data: null };
-  let statsRes = { data: null };
+  let platformsRes: any = { data: null };
+  let solvedIssuesRes: any = { data: null };
+  let contentRes: any = { data: null };
+  let statsRes: any = { data: null };
 
   try {
     const results = await Promise.all([
