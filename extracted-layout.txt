@@ -1,0 +1,117 @@
+FOUND LAYOUT:
+Created At: 2026-06-13T20:37:30Z
+Completed At: 2026-06-13T20:37:30Z
+File Path: `file:///c:/Users/Surface/3D%20Objects/Rafed/src/app/layout.tsx`
+Total Lines: 65
+Total Bytes: 2313
+Showing lines 1 to 65
+The following code has been modified to include a line number before every line, in the format: <line_number>: <original_line>. Please note that any changes targeting the original code should remove the line number, colon, and leading space.
+1: /* ═══════════════════════════════
+2:    رافد — Root Layout
+3:    مع نظام المصادقة والإشعارات
+4:    ═══════════════════════════════ */
+5: 
+6: import type { Metadata } from 'next';
+7: import { Cairo } from 'next/font/google';
+8: import './globals.css';
+9: import { ToastProvider } from '@/components/ui/ToastProvider';
+10: import { ThemeProvider } from '@/components/providers/ThemeProvider';
+11: import { LayoutShell } from '@/components/layout/LayoutShell';
+12: import { AuthProvider } from '@/components/auth/AuthProvider';
+13: import { NotificationProvider } from '@/components/notifications/NotificationProvider';
+14: 
+15: const cairo = Cairo({
+16:   subsets: ['arabic', 'latin'],
+17:   weight: ['400', '500', '600', '700', '900'],
+18:   display: 'swap',
+19:   variable: '--font-cairo',
+20: });
+21: 
+22: export const metadata: Metadata = {
+23:   title: 'رافد — المرافقة الرقمية التربوية',
+24:   description:
+25:     'منصة رافد للدعم التقني الرقمي — نرصد، نرافق، نحسّن. المرافقة الرقمية لمنظومة التربية الوطنية الجزائرية.',
+26:   keywords: [
+27:     'رافد',
+28:     'المرافقة الرقمية',
+29:     'التربية',
+30:     'الجزائر',
+31:     'فضاء الأستاذ',
+32:     'منصة موظف',
+33:     'دعم تقني',
+34:   ],
+35:   authors: [{ name: 'رافد' }],
+36:   openGraph: {
+37:     title: 'رافد — المرافقة الرقمية التربوية',
+38:     description: 'منصة الدعم التقني الرقمي لمنظومة التربية الوطنية الجزائرية',
+39:     type: 'website',
+40:     locale: 'ar_DZ',
+41:   },
+42: };
+43: 
+44: export default function RootLayout({
+45:   children,
+46: }: {
+47:   children: React.ReactNo
+
+FOUND GLOBALS:
+Created At: 2026-06-13T20:40:33Z
+Completed At: 2026-06-13T20:40:33Z
+File Path: `file:///c:/Users/Surface/3D%20Objects/Rafed/src/app/globals.css`
+Total Lines: 334
+Total Bytes: 8569
+Showing lines 1 to 334
+The following code has been modified to include a line number before every line, in the format: <line_number>: <original_line>. Please note that any changes targeting the original code should remove the line number, colon, and leading space.
+1: /* ═══════════════════════════════
+2:    رافد — Global CSS
+3:    ═══════════════════════════════ */
+4: 
+5: @tailwind base;
+6: @tailwind components;
+7: @tailwind utilities;
+8: 
+9: @layer base {
+10:   :root, .dark {
+11:     --bg-base: 10 10 26;
+12:     --bg-surface: 13 17 23;
+13:     --bg-card: 17 24 39;
+14:     --color-white: 255 255 255;
+15:     --glass-bg: rgba(255, 255, 255, 0.06);
+16:     --glass-border: rgba(201, 168, 76, 0.25);
+17:   }
+18: 
+19:   .light {
+20:     --bg-base: 248 250 252;
+21:     --bg-surface: 241 245 249;
+22:     --bg-card: 255 255 255;
+23:     --color-white: 15 23 42; /* Dark text for light mode */
+24:     --glass-bg: rgba(255, 255, 255, 0.7);
+25:     --glass-border: rgba(201, 168, 76, 0.35);
+26:   }
+27: 
+28:   * {
+29:     box-sizing: border-box;
+30:     margin: 0;
+31:     padding: 0;
+32:     transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+33:   }
+34: 
+35:   html {
+36:     scroll-behavior: smooth;
+37:     -webkit-font-smoothing: antialiased;
+38:     -moz-osx-font-smoothing: grayscale;
+39:   }
+40: 
+41:   body {
+42:     background-color: rgb(var(--bg-base));
+43:     color: rgb(var(--color-white));
+44:     direction: rtl;
+45:     min-height: 100vh;
+46:   }
+47: 
+48:   .dark body {
+49:     background-image: 
+50:       radial-gradient(circle at 15% 50%, rgba(27, 38, 59, 0.8), transparent 40%),
+51:       radial-gradient(circle at 85% 30%, rgba(201, 168, 76, 0.15), transparent 40%),
+52:       linear-gradient(135deg, rgb(10, 10, 26) 0%, #1b263b 50%, rgb(10, 10
+

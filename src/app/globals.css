@@ -1,0 +1,338 @@
+/* ═══════════════════════════════
+   رافد — Global CSS
+   ═══════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root, .dark {
+    --font-cairo: 'Cairo', sans-serif;
+    --bg-base: 10 10 26;
+    --bg-surface: 13 17 23;
+    --bg-card: 17 24 39;
+    --color-white: 255 255 255;
+    --glass-bg: rgba(255, 255, 255, 0.06);
+    --glass-border: rgba(201, 168, 76, 0.25);
+  }
+
+  .light {
+    --font-cairo: 'Cairo', sans-serif;
+    --bg-base: 248 250 252;
+    --bg-surface: 241 245 249;
+    --bg-card: 255 255 255;
+    --color-white: 15 23 42; /* Dark text for light mode */
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(201, 168, 76, 0.35);
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: rgb(var(--bg-base));
+    color: rgb(var(--color-white));
+    direction: rtl;
+    min-height: 100vh;
+  }
+
+  .dark body {
+    background-image: 
+      radial-gradient(circle at 15% 50%, rgba(27, 38, 59, 0.8), transparent 40%),
+      radial-gradient(circle at 85% 30%, rgba(201, 168, 76, 0.15), transparent 40%),
+      linear-gradient(135deg, rgb(10, 10, 26) 0%, #1b263b 50%, rgb(10, 10, 26) 100%);
+    background-attachment: fixed;
+  }
+
+  .light body {
+    background-image: linear-gradient(135deg, rgb(248, 250, 252) 0%, rgb(241, 245, 249) 50%, rgb(248, 250, 252) 100%);
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(201, 168, 76, 0.4);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(201, 168, 76, 0.6);
+  }
+
+  /* Selection */
+  ::selection {
+    background: rgba(201, 168, 76, 0.3);
+    color: #F0C040;
+  }
+
+  /* Native select fix for dark mode */
+  select option {
+    background: rgb(var(--bg-surface));
+    color: rgb(var(--color-white));
+  }
+}
+
+/* ═══════════════════════════════════════════════════════
+   LIGHT MODE OVERRIDES 
+   ═══════════════════════════════════════════════════════ */
+
+/* إصلاح الـ Navbar في Light Mode */
+.light .navbar,
+.light nav {
+  background-color: rgba(248, 250, 252, 0.95) !important;
+  border-bottom-color: rgba(201, 168, 76, 0.3) !important;
+}
+
+/* إصلاح الأزرار الثانوية */
+.light .btn-secondary,
+.light button[class*="border-amber"] {
+  background-color: rgb(255, 255, 255) !important;
+  color: rgb(15, 23, 42) !important;
+  border-color: rgba(201, 168, 76, 0.5) !important;
+}
+
+/* إصلاح البطاقات */
+.light .card,
+.light [class*="glass"] {
+  background-color: rgba(255, 255, 255, 0.8) !important;
+  border-color: rgba(201, 168, 76, 0.3) !important;
+}
+
+/* إصلاح التدرجات الذهبية - تبقى كما هي */
+.light [class*="from-amber"],
+.light [class*="to-amber"],
+.light [class*="bg-gradient"] {
+  /* الذهبي ثابت في الوضعين */
+}
+
+/* إصلاح حقول الإدخال */
+.light input,
+.light textarea,
+.light select {
+  background-color: rgb(255, 255, 255) !important;
+  color: rgb(15, 23, 42) !important;
+  border-color: rgba(201, 168, 76, 0.4) !important;
+}
+
+.light input::placeholder,
+.light textarea::placeholder {
+  color: rgb(100, 116, 139) !important;
+}
+
+/* إصلاح الجداول */
+.light table,
+.light th,
+.light td {
+  color: rgb(15, 23, 42) !important;
+}
+
+.light thead {
+  background-color: rgb(241, 245, 249) !important;
+}
+
+/* إصلاح الـ Dropdown والقوائم */
+.light [class*="dropdown"],
+.light [class*="menu"] {
+  background-color: rgb(255, 255, 255) !important;
+  color: rgb(15, 23, 42) !important;
+  border-color: rgba(201, 168, 76, 0.3) !important;
+}
+
+/* إصلاح الـ Modal */
+.light [class*="modal"],
+.light [role="dialog"] {
+  background-color: rgb(255, 255, 255) !important;
+  color: rgb(15, 23, 42) !important;
+}
+
+/* إصلاح الشارات (Badges) */
+.light .badge {
+  background-color: rgb(241, 245, 249) !important;
+  color: rgb(15, 23, 42) !important;
+}
+
+/* الشارات الملونة تبقى بألوانها */
+.light [class*="bg-green"],
+.light [class*="bg-red"],
+.light [class*="bg-orange"],
+.light [class*="bg-blue"],
+.light [class*="bg-yellow"],
+.light [class*="bg-purple"] {
+  /* تبقى بألوانها الأصلية */
+}
+
+/* إصلاح الـ Sidebar */
+.light aside,
+.light [class*="sidebar"] {
+  background-color: rgb(248, 250, 252) !important;
+  border-color: rgba(201, 168, 76, 0.2) !important;
+  color: rgb(15, 23, 42) !important;
+}
+
+.light aside *,
+.light [class*="sidebar"] * {
+  color: rgb(15, 23, 42);
+}
+
+.light aside .text-white,
+.light [class*="sidebar"] .text-white {
+  color: rgb(15, 23, 42) !important;
+}
+
+/* إصلاح الـ Footer */
+.light footer {
+  background-color: rgb(241, 245, 249) !important;
+  color: rgb(51, 65, 85) !important;
+  border-top-color: rgba(201, 168, 76, 0.2) !important;
+}
+
+.light footer * {
+  color: inherit;
+}
+
+/* إصلاح الـ Toast Notifications */
+.light [class*="toast"],
+.light [class*="notification"] {
+  background-color: rgb(255, 255, 255) !important;
+  color: rgb(15, 23, 42) !important;
+  border-color: rgba(201, 168, 76, 0.3) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* إصلاح الـ Scrollbar في Light Mode */
+.light ::-webkit-scrollbar-track {
+  background: rgba(241, 245, 249, 0.9);
+}
+
+.light ::-webkit-scrollbar-thumb {
+  background: rgba(201, 168, 76, 0.5);
+}
+
+/* الذهبي والـ Gradient الرئيسي ثابتان دائماً */
+.light .logo,
+.light [class*="bg-gradient-to"] {
+  /* لا تغيير */
+}
+
+/* نصوص فوق الذهبي */
+.light .btn-primary,
+.light [class*="bg-gradient"][class*="amber"] {
+  color: rgb(13, 27, 42) !important;
+}
+
+@layer components {
+  /* Gold gradient text */
+  .gold-gradient-text {
+    @apply bg-gradient-to-l from-[#C9A84C] to-[#F0C040] bg-clip-text text-transparent;
+  }
+
+  /* Gold shimmer effect */
+  .gold-shimmer {
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(201, 168, 76, 0.1) 25%,
+      rgba(240, 192, 64, 0.2) 50%,
+      rgba(201, 168, 76, 0.1) 75%,
+      transparent 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 3s linear infinite;
+  }
+
+  /* Glass card base */
+  .glass-card {
+    @apply rounded-[20px] border border-[rgba(201,168,76,0.25)];
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  /* Glass card hover */
+  .glass-card-hover {
+    @apply glass-card transition-all duration-300;
+  }
+  .glass-card-hover:hover {
+    border-color: rgba(201, 168, 76, 0.6);
+    box-shadow: 0 0 40px rgba(201, 168, 76, 0.15);
+  }
+
+  /* Grid background pattern */
+  .grid-bg {
+    background-image: 
+      linear-gradient(rgba(201, 168, 76, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201, 168, 76, 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  /* Hero gradient overlay */
+  .hero-gradient {
+    background: linear-gradient(
+      180deg,
+      rgba(10, 10, 26, 0.3) 0%,
+      rgba(10, 10, 26, 0.8) 50%,
+      rgba(10, 10, 26, 1) 100%
+    );
+  }
+
+  /* Light mode: Hero/grid become light-themed */
+  .light .grid-bg {
+    background-image: 
+      linear-gradient(rgba(201, 168, 76, 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201, 168, 76, 0.06) 1px, transparent 1px);
+  }
+
+  .light .hero-gradient {
+    background: linear-gradient(
+      180deg,
+      rgba(248, 250, 252, 0.2) 0%,
+      rgba(248, 250, 252, 0.7) 50%,
+      rgba(248, 250, 252, 1) 100%
+    );
+  }
+
+  /* Section alternate backgrounds */
+  .section-dark {
+    background-color: transparent;
+  }
+  .section-darker {
+    background-color: rgba(5, 11, 20, 0.5);
+  }
+
+  .light .section-darker {
+    background-color: rgba(241, 245, 249, 0.7);
+  }
+}
+
+@layer utilities {
+  .animate-delay-100 {
+    animation-delay: 100ms;
+  }
+  .animate-delay-200 {
+    animation-delay: 200ms;
+  }
+  .animate-delay-300 {
+    animation-delay: 300ms;
+  }
+  .animate-delay-500 {
+    animation-delay: 500ms;
+  }
+}
+
